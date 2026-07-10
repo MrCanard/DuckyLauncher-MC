@@ -1,0 +1,5 @@
+C:\duckyluncher (5)\minecraft-launcher\target\release\build\getrandom-9b632b775f51b2fd\build_script_build-9b632b775f51b2fd.d: C:\Users\MrCanard\ Officiel\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\getrandom-0.4.3\build.rs
+
+C:\duckyluncher (5)\minecraft-launcher\target\release\build\getrandom-9b632b775f51b2fd\build_script_build-9b632b775f51b2fd.exe: C:\Users\MrCanard\ Officiel\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\getrandom-0.4.3\build.rs
+
+C:\Users\MrCanard\ Officiel\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\getrandom-0.4.3\build.rs:

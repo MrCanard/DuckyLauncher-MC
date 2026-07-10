@@ -1,0 +1,2 @@
+cargo:rustc-link-search=native=C:\duckyluncher (5)\minecraft-launcher\target\release\build\webview2-com-sys-dcb9e27a47350c17\out\x64
+cargo:rustc-link-lib=advapi32
