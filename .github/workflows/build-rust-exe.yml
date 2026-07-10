@@ -1,0 +1,34 @@
+name: Build Rust Windows EXE
+
+on:
+  push:
+    branches: [ "main" ] # Déclenche la compilation à chaque push sur main
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest # Obligatoire pour obtenir un .exe natif Windows
+
+    steps:
+    - name: Récupérer le code du dépôt
+      uses: actions/checkout@v4
+
+    - name: Installer l'outil de compilation Rust
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Activer le cache Cargo
+      uses: Swatinem/rust-cache@v2
+      # Cela évite de retélécharger toutes les dépendances à chaque fois
+
+    - name: Compiler le projet en mode Release
+      run: cargo build --release
+
+    - name: Téléverser le fichier .exe sur GitHub
+      uses: actions/upload-artifact@v4
+      with:
+        name: DuckyLauncher-Windows
+        # Cargo place l'exécutable dans target/release/
+        # ATTENTION : Si le nom de votre projet dans Cargo.toml est différent de "minecraft-launcher",
+        # remplacez "minecraft-launcher.exe" ci-dessous par le nom de votre binaire.
+        path: target/release/minecraft-launcher.exe
