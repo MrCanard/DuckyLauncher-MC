@@ -1,0 +1,153 @@
+:root {
+  --bg: #16181b;
+  --panel: #1e2124;
+  --panel-2: #26292d;
+  --accent: #22c55e;
+  --accent-dark: #0f3d22;
+  --text: #e7e9ea;
+  --muted: #9aa0a6;
+  --border: #2c2f33;
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); }
+button { font-family: inherit; cursor: pointer; }
+a { color: var(--accent); }
+
+.app { display: grid; grid-template-columns: 220px 1fr 260px; height: 100vh; }
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.brand { font-weight: 700; font-size: 16px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.brand span { color: var(--accent); }
+
+.nav-main { display: flex; flex-direction: column; gap: 2px; }
+.nav-btn {
+  display: flex; align-items: center; gap: 10px;
+  background: transparent; border: none; color: var(--muted);
+  padding: 10px 12px; border-radius: 8px; font-size: 14px; text-align: left;
+}
+.nav-btn.active, .nav-btn:hover { background: var(--panel-2); color: var(--text); }
+
+.nav-divider { height: 1px; background: var(--border); margin: 10px 0; }
+
+.pinned-list { display: flex; flex-direction: column; gap: 4px; flex: 1; overflow-y: auto; }
+.pinned-item {
+  display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 6px;
+  font-size: 12px; color: var(--muted); cursor: pointer;
+}
+.pinned-item:hover { background: var(--panel-2); }
+.pinned-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+.icon-btn {
+  background: var(--panel-2); border: none; color: var(--text);
+  width: 32px; height: 32px; border-radius: 8px; font-size: 16px;
+}
+.add-btn { align-self: flex-start; margin-top: 6px; }
+.sidebar-bottom { margin-top: auto; }
+
+/* ---------- Main ---------- */
+main { padding: 24px 28px; overflow-y: auto; }
+h2 { margin: 0 0 4px; font-size: 22px; }
+.subtitle { margin: 0 0 4px; font-size: 15px; color: var(--muted); font-weight: 500; }
+.hint { color: var(--muted); font-size: 13px; max-width: 640px; }
+
+.view { display: none; }
+.view.active { display: block; }
+
+.view-header { display: flex; align-items: center; justify-content: space-between; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.card {
+  background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px; transition: transform .1s, border-color .1s; cursor: pointer;
+}
+.card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.card img, .card .icon-fallback {
+  width: 44px; height: 44px; border-radius: 8px; object-fit: cover;
+  background: var(--panel-2); display: flex; align-items: center; justify-content: center;
+}
+.card h3 { font-size: 14px; margin: 10px 0 4px; }
+.card p { font-size: 12px; color: var(--muted); margin: 0; }
+.card .play-btn {
+  margin-top: 10px; width: 100%; background: var(--accent); color: #06280f;
+  border: none; padding: 8px; border-radius: 7px; font-weight: 600; font-size: 13px;
+}
+
+/* ---------- Tabs / search ---------- */
+.tabs { display: flex; gap: 6px; margin-top: 14px; }
+.tab-btn {
+  background: var(--panel); border: 1px solid var(--border); color: var(--muted);
+  padding: 8px 14px; border-radius: 20px; font-size: 13px;
+}
+.tab-btn.active { background: var(--accent-dark); color: var(--accent); border-color: var(--accent); }
+
+.search-bar { display: flex; gap: 8px; margin-top: 12px; }
+.search-bar input {
+  flex: 1; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--panel); color: var(--text);
+}
+.search-bar button {
+  padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--panel-2); color: var(--text);
+}
+
+/* ---------- Servers ---------- */
+.server-list { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+.server-row {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;
+}
+.server-row .info h3 { margin: 0 0 4px; font-size: 15px; }
+.server-row .info p { margin: 0; font-size: 12px; color: var(--muted); }
+.status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: #555; }
+.status-dot.on { background: var(--accent); }
+.server-row .actions { display: flex; gap: 8px; }
+.server-row button {
+  border: 1px solid var(--border); background: var(--panel-2); color: var(--text);
+  padding: 8px 12px; border-radius: 7px; font-size: 13px;
+}
+.server-row button.start { background: var(--accent); color: #06280f; border-color: var(--accent); }
+.server-row button.stop { background: #3d1414; color: #ff8080; border-color: #5a1c1c; }
+
+/* ---------- Modals / forms ---------- */
+.modal-view label { display: block; margin: 12px 0; font-size: 13px; color: var(--muted); }
+.modal-view input:not([type=checkbox]), .modal-view select {
+  display: block; width: 100%; margin-top: 6px; padding: 10px;
+  border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text);
+}
+.checkbox-label { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.actions { display: flex; gap: 8px; margin-top: 18px; }
+.actions button { padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel-2); color: var(--text); }
+
+.primary {
+  background: var(--accent); color: #06280f; border: none;
+  padding: 10px 14px; border-radius: 8px; font-weight: 600;
+}
+
+/* ---------- Right panel ---------- */
+.right-panel {
+  background: var(--panel); border-left: 1px solid var(--border);
+  padding: 18px 16px; overflow-y: auto;
+}
+.right-panel h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 18px 0 8px; }
+.right-panel h4:first-child { margin-top: 0; }
+.account-box { font-size: 13px; }
+#login-btn { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel-2); color: var(--text); }
+.account-chip { display: flex; align-items: center; gap: 10px; }
+.account-chip .avatar { width: 32px; height: 32px; border-radius: 6px; background: var(--accent-dark); }
+.tip-card { background: var(--panel-2); border-radius: 10px; padding: 12px; font-size: 12px; color: var(--muted); line-height: 1.5; }

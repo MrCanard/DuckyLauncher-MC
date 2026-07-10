@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>DuckyLauncher</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">🦆 <span>duckyluncher</span></div>
+
+      <nav class="nav-main">
+        <button class="nav-btn active" data-view="home" title="Accueil">🏠<span>Accueil</span></button>
+        <button class="nav-btn" data-view="browse" title="Découvrir">🧭<span>Découvrir</span></button>
+        <button class="nav-btn" data-view="library" title="Bibliothèque">📚<span>Bibliothèque</span></button>
+        <button class="nav-btn" data-view="servers" title="Serveurs">🖧<span>Serveurs</span></button>
+      </nav>
+
+      <div class="nav-divider"></div>
+      <div id="pinned-instances" class="pinned-list"></div>
+
+      <button id="new-instance-btn" class="icon-btn add-btn" title="Nouvelle instance">+</button>
+
+      <div class="sidebar-bottom">
+        <button class="icon-btn" title="Paramètres">⚙️</button>
+      </div>
+    </aside>
+
+    <main>
+      <!-- ACCUEIL -->
+      <section id="view-home" class="view active">
+        <h2>Bon retour !</h2>
+        <h3 class="subtitle">Reprendre où tu t'es arrêté</h3>
+        <div id="home-grid" class="grid"></div>
+      </section>
+
+      <!-- DÉCOUVRIR -->
+      <section id="view-browse" class="view">
+        <h2>Découvrir du contenu</h2>
+        <div class="tabs">
+          <button class="tab-btn active" data-type="mod">Mods</button>
+          <button class="tab-btn" data-type="modpack">Modpacks</button>
+          <button class="tab-btn" data-type="resourcepack">Resource Packs</button>
+          <button class="tab-btn" data-type="shader">Shaders</button>
+        </div>
+        <div class="search-bar">
+          <input id="search-query" placeholder="Rechercher..." />
+          <button id="search-btn">Rechercher</button>
+        </div>
+        <div id="search-results" class="grid"></div>
+      </section>
+
+      <!-- BIBLIOTHÈQUE -->
+      <section id="view-library" class="view">
+        <div class="view-header">
+          <h2>Mes instances</h2>
+          <button id="lib-new-instance-btn" class="primary">+ Nouvelle instance</button>
+        </div>
+        <div id="library-grid" class="grid"></div>
+      </section>
+
+      <!-- SERVEURS -->
+      <section id="view-servers" class="view">
+        <div class="view-header">
+          <h2>Mes serveurs (hébergés sur ce PC)</h2>
+          <button id="new-server-btn" class="primary">+ Nouveau serveur</button>
+        </div>
+        <p class="hint">Ces serveurs tournent en local, gratuitement, tant que ton PC et DuckyLauncher sont allumés.
+        Pour que des amis rejoignent depuis l'extérieur, il faudra rediriger le port sur ta box (port forwarding).</p>
+        <div id="servers-list" class="server-list"></div>
+      </section>
+
+      <!-- MODALE : nouvelle instance -->
+      <section id="view-new-instance" class="view modal-view">
+        <h2>Nouvelle instance</h2>
+        <label>Nom<input id="ni-name" placeholder="Ma super instance" /></label>
+        <label>Version Minecraft
+          <select id="ni-version"></select>
+        </label>
+        <label>Mod loader
+          <select id="ni-loader">
+            <option value="vanilla">Vanilla</option>
+            <option value="fabric">Fabric</option>
+            <option value="quilt">Quilt</option>
+            <option value="forge">Forge</option>
+            <option value="neoforge">NeoForge</option>
+          </select>
+        </label>
+        <div class="actions">
+          <button id="ni-cancel">Annuler</button>
+          <button id="ni-create" class="primary">Créer</button>
+        </div>
+      </section>
+
+      <!-- MODALE : nouveau serveur -->
+      <section id="view-new-server" class="view modal-view">
+        <h2>Nouveau serveur local</h2>
+        <label>Nom<input id="ns-name" placeholder="Serveur entre potes" /></label>
+        <label>Version Minecraft
+          <select id="ns-version"></select>
+        </label>
+        <label>Logiciel serveur
+          <select id="ns-software">
+            <option value="vanilla">Vanilla</option>
+            <option value="paper">Paper (optimisé, plugins)</option>
+          </select>
+        </label>
+        <label>Port<input id="ns-port" type="number" value="25565" /></label>
+        <label class="checkbox-label">
+          <input id="ns-eula" type="checkbox" />
+          J'accepte la <a href="https://aka.ms/MinecraftEULA" target="_blank">Minecraft EULA</a>
+        </label>
+        <div class="actions">
+          <button id="ns-cancel">Annuler</button>
+          <button id="ns-create" class="primary">Créer et installer</button>
+        </div>
+      </section>
+    </main>
+
+    <aside class="right-panel">
+      <h4>Compte</h4>
+      <div id="account-box" class="account-box">
+        <button id="login-btn">Se connecter (Microsoft)</button>
+      </div>
+
+      <h4>Astuce</h4>
+      <div class="tip-card">
+        Crée une instance par modpack ou combo de mods : tes mondes restent séparés
+        et rien ne casse quand tu changes de version.
+      </div>
+    </aside>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
