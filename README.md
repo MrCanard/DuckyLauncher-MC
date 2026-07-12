@@ -137,12 +137,6 @@ DuckyLauncher/
 
 ---
 
-# 📷 Aperçu
-
-Ajoutez ici des captures d'écran du launcher.
-
----
-
 # ❤️ Remerciements
 
 Merci à tous les testeurs et à la communauté Minecraft.
